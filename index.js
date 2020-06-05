@@ -28,9 +28,12 @@ class Signer {
     }
 
     this.args.push(`--user-agent="${this.userAgent}"`);
+    if (proxy) {
+      this.args.push(`--proxy-server=${proxy}`, '--proxy-bypass-list=<-loopback>')
+    }
 
     this.options = {
-      args: proxy ? [`--proxy-server=${proxy}`, '--proxy-bypass-list=<-loopback>'] : [],
+      //args: proxy ? [`--proxy-server=${proxy}`, '--proxy-bypass-list=<-loopback>'] : [],
       ignoreDefaultArgs: ["--mute-audio", "--hide-scrollbars"],
       headless: true,
       ignoreHTTPSErrors: true,
