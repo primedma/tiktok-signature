@@ -13,7 +13,7 @@ class Signer {
     "--ignore-certifcate-errors-spki-list",
   ];
 
-  constructor(userAgent, tac, browser) {
+  constructor(proxy = null, userAgent, tac, browser) {
     if (userAgent) {
       this.userAgent = userAgent;
     }
@@ -30,7 +30,7 @@ class Signer {
     this.args.push(`--user-agent="${this.userAgent}"`);
 
     this.options = {
-      // args: this.args,
+      args: proxy ? [`--proxy-server=${proxy}`, '--proxy-bypass-list=<-loopback>'] : [],
       ignoreDefaultArgs: ["--mute-audio", "--hide-scrollbars"],
       headless: true,
       ignoreHTTPSErrors: true,
