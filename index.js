@@ -58,6 +58,8 @@ class Signer {
     });
 
     this.page = await this.context.newPage();
+    await this.page.goto("https://whatismyipaddress.com/ip-lookup", {waitUntil: "load"});
+    console.log(await this.page.content());
     await this.page.goto("https://www.tiktok.com/trending?lang=en", {
       waitUntil: "load",
     });
