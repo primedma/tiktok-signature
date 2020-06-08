@@ -42,7 +42,7 @@ class Signer {
 
   async init() {
     if (!this.browser) {
-      this.browser = await chromium.launch(this.options);
+      this.browser = await webkit.launch(this.options);
     }
 
     let emulateTemplate = { ...iPhone11 };
