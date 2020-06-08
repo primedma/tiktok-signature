@@ -1,4 +1,4 @@
-const { webkit, devices } = require("playwright");
+const { chromium, webkit, devices } = require("playwright");
 const iPhone11 = devices["iPhone 11 Pro"];
 
 class Signer {
@@ -42,7 +42,7 @@ class Signer {
 
   async init() {
     if (!this.browser) {
-      this.browser = await webkit.launch(this.options);
+      this.browser = await chromium.launch(this.options);
     }
 
     let emulateTemplate = { ...iPhone11 };
